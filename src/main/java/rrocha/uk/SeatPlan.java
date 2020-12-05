@@ -37,6 +37,11 @@ public class SeatPlan {
 
     }
 
+    public int getSeatStatus(int row, int column) {
+        int seat = seats[row][column];
+        return seat;
+    }
+
     //get seat value (1 is taken 0 is free)
     public void getSeatValue(int row, int column) {
 

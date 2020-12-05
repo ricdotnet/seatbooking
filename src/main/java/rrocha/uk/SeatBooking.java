@@ -25,8 +25,8 @@ public final class SeatBooking {
             int option = input.nextInt();
             System.out.println();
 
-            int row = rand.nextInt(1+11); //randomly select row
-            int column = rand.nextInt(1+6); //randomly select column
+            int row = rand.nextInt(12); //randomly select row
+            int column = rand.nextInt(6); //randomly select column
 
             //switch case for options
             switch(option) {
@@ -39,14 +39,7 @@ public final class SeatBooking {
                 //randomly allocate a seat
                 case 2:
 
-                    
-
-                    // while(seat_value == 1) {
-                    //     row = rand.nextInt(1+11);
-                    //     column = rand.nextInt(1+6);
-                    // }
-
-                    seats.getSeatValue(row, column);
+                    //seats.getSeatValue(row+1, column+1);
 
                     // if(seat_value == 1) {
                     //     System.out.println("not free");
@@ -54,7 +47,17 @@ public final class SeatBooking {
                     //     System.out.println("free");
                     // }
 
-                    seats.selectSeat(row, column);
+                    int status = seats.getSeatStatus(row, column);
+                    System.out.println(status);
+
+                    if(status == 1) {
+                        System.out.println("seat is taken.");
+                    } else {
+                        System.out.println("booked!!");
+                    }
+
+                    seats.selectSeat(row+1, column+1);
+
                     break;
 
             }
