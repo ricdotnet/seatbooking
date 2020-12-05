@@ -25,8 +25,8 @@ public final class SeatBooking {
             int option = input.nextInt();
             System.out.println();
 
-            int row = rand.nextInt(12); //randomly select row
-            int column = rand.nextInt(6); //randomly select column
+            // int row = rand.nextInt(12); //randomly select row
+            // int column = rand.nextInt(6); //randomly select column
 
             //switch case for options
             switch(option) {
@@ -39,24 +39,36 @@ public final class SeatBooking {
                 //randomly allocate a seat
                 case 2:
 
-                    //seats.getSeatValue(row+1, column+1);
+                    //this while loop allocates a row and a collumn
+                    //checks if it is empty or occupied
+                    //if it is empty books the seat
+                    //if it is occupied it will repeat itself and choose another seat
+                    //it will repeat until a seat is booked
+                    boolean booked = false;
+                    while(booked == false) {
 
-                    // if(seat_value == 1) {
-                    //     System.out.println("not free");
-                    // } else if(seat_value == 0) {
-                    //     System.out.println("free");
-                    // }
+                        int row = rand.nextInt(12); //randomly select row
+                        int column = rand.nextInt(6); //randomly select column
 
-                    int status = seats.getSeatStatus(row, column);
-                    System.out.println(status);
+                        char status = seats.getSeatStatus(row, column);
 
-                    if(status == 1) {
-                        System.out.println("seat is taken.");
-                    } else {
-                        System.out.println("booked!!");
+                        //if the seat is empty book it and end while loop. if not repeat
+                        if(status == '0') {
+                            seats.selectSeat(row+1, column+1);
+                            booked = true;
+
+                            //print the seat location
+                            System.out.println(seats.getSeat(row+1, column+1));
+
+                        }
+
                     }
 
-                    seats.selectSeat(row+1, column+1);
+                    break;
+                
+                case 3:
+
+                    //ask for seat number (AA, BD, CC, etc)
 
                     break;
 
