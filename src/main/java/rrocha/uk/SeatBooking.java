@@ -20,6 +20,8 @@ public final class SeatBooking {
      */
     public static void main(String[] args) {
 
+        int counter = 0;
+
         while(true) {
             main.getMenu();
             int option = input.nextInt();
@@ -45,22 +47,41 @@ public final class SeatBooking {
                     //if it is occupied it will repeat itself and choose another seat
                     //it will repeat until a seat is booked
                     boolean booked = false;
-                    while(booked == false) {
 
-                        int row = rand.nextInt(12); //randomly select row
-                        int column = rand.nextInt(6); //randomly select column
+                    if (counter == 72) {
 
-                        char status = seats.getSeatStatus(row, column);
+                        System.out.println("The plane is full. :(");
 
-                        //if the seat is empty book it and end while loop. if not repeat
-                        if(status == '0') {
-                            seats.selectSeat(row+1, column+1);
-                            booked = true;
+                    } else {
 
-                            //print the seat location
-                            System.out.println(seats.getSeat(row+1, column+1));
+                        //this while loop will run until a seat is booked
+                        //if a seat is already booked it will loop and chose another one
+                        //if a seat is not booked it will use that seat, book and end the loop
+                        while(booked == false) {
+
+                            int row = rand.nextInt(12); //randomly select row
+                            int column = rand.nextInt(7); //randomly select column
+
+                            char status = seats.getSeatStatus(row+1, column+1);
+
+                            //if the seat is empty book it and end while loop. if not repeat
+                            if (status == '1' || status == ' ') {
+                                System.out.println("not a valid seat.");
+
+                            } else if (status == '0') {
+                                seats.selectSeat(row+1, column+1);
+                                booked = true;
+
+                                //print the seat location
+                                System.out.println(seats.getSeat(row+1, column+1));
+
+                                counter++;
+
+                            }
 
                         }
+
+                        System.out.println("seats taken: " + counter);
 
                     }
 

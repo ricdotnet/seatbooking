@@ -12,19 +12,19 @@ public class SeatPlan {
 
     //char array multidimensional
     //rows and columns
-    char[][] seats = {{' ','A','B','C','D','E','F'},
-        {'A','0','0','0','0','0','0'},
-        {'B','0','0','0','0','0','0'},
-        {'C','0','0','0','0','0','0'},
-        {'D','0','0','0','0','0','0'},
-        {'E','0','0','0','0','0','0'},
-        {'F','0','0','0','0','0','0'},
-        {'G','0','0','0','0','0','0'},
-        {'H','0','0','0','0','0','0'},
-        {'I','0','0','0','0','0','0'},
-        {'J','0','0','0','0','0','0'},
-        {'K','0','0','0','0','0','0'},
-        {'L','0','0','0','0','0','0'}};
+    char[][] seats = {{' ','A','B','C',' ','D','E','F'},
+        {'A','0','0','0',' ','0','0','0'},
+        {'B','0','0','0',' ','0','0','0'},
+        {'C','0','0','0',' ','0','0','0'},
+        {'D','0','0','0',' ','0','0','0'},
+        {'E','0','0','0',' ','0','0','0'},
+        {'F','0','0','0',' ','0','0','0'},
+        {'G','0','0','0',' ','0','0','0'},
+        {'H','0','0','0',' ','0','0','0'},
+        {'I','0','0','0',' ','0','0','0'},
+        {'J','0','0','0',' ','0','0','0'},
+        {'K','0','0','0',' ','0','0','0'},
+        {'L','0','0','0',' ','0','0','0'}};
 
     //enhanced loop to print the seats plan
     public void getSeatPlan() {
@@ -46,44 +46,68 @@ public class SeatPlan {
     //get seat location
     public String getSeat(int row, int column) {
 
-        if (row == 1) {
-            seat_row = "A";
-        } else if (row == 2) {
-            seat_row = "B";
-        } else if (row == 3) {
-            seat_row = "C";
-        } else if (row == 4) {
-            seat_row = "D";
-        } else if (row == 5) {
-            seat_row = "E";
-        } else if (row == 6) {
-            seat_row = "F";
-        } else if (row == 7) {
-            seat_row = "G";
-        } else if (row == 8) {
-            seat_row = "H";
-        } else if (row == 9) {
-            seat_row = "I";
-        } else if (row == 10) {
-            seat_row = "J";
-        } else if (row == 11) {
-            seat_row = "K";
-        } else if (row == 12) {
-            seat_row = "L";
+        // if (row == 1) {
+        //     seat_row = "A";
+        // } else if (row == 2) {
+        //     seat_row = "B";
+        // } else if (row == 3) {
+        //     seat_row = "C";
+        // } else if (row == 4) {
+        //     seat_row = "D";
+        // } else if (row == 5) {
+        //     seat_row = "E";
+        // } else if (row == 6) {
+        //     seat_row = "F";
+        // } else if (row == 7) {
+        //     seat_row = "G";
+        // } else if (row == 8) {
+        //     seat_row = "H";
+        // } else if (row == 9) {
+        //     seat_row = "I";
+        // } else if (row == 10) {
+        //     seat_row = "J";
+        // } else if (row == 11) {
+        //     seat_row = "K";
+        // } else if (row == 12) {
+        //     seat_row = "L";
+        // }
+
+        // if (column == 1) {
+        //     seat_column = "A";
+        // } else if (column == 2) {
+        //     seat_column = "B";
+        // } else if (column == 3) {
+        //     seat_column = "C";
+        // } else if (column == 4) {
+        //     seat_column = "D";
+        // } else if (column == 5) {
+        //     seat_column = "E";
+        // } else if (column == 6) {
+        //     seat_column = "F";
+        // }
+
+        switch(row) {
+            case 1 : seat_row = "A"; break;
+            case 2 : seat_row = "B"; break;
+            case 3 : seat_row = "C"; break;
+            case 4 : seat_row = "D"; break;
+            case 5 : seat_row = "E"; break;
+            case 6 : seat_row = "F"; break;
+            case 7 : seat_row = "G"; break;
+            case 8 : seat_row = "H"; break;
+            case 9 : seat_row = "I"; break;
+            case 10 : seat_row = "J"; break;
+            case 11 : seat_row = "K"; break;
+            case 12 : seat_row = "L"; break;
         }
 
-        if (column == 1) {
-            seat_column = "A";
-        } else if (column == 2) {
-            seat_column = "B";
-        } else if (column == 3) {
-            seat_column = "C";
-        } else if (column == 4) {
-            seat_column = "D";
-        } else if (column == 5) {
-            seat_column = "E";
-        } else if (column == 6) {
-            seat_column = "F";
+        switch(column) {
+            case 1 : seat_column = "A"; break;
+            case 2 : seat_column = "B"; break;
+            case 3 : seat_column = "C"; break;
+            case 5 : seat_column = "D"; break;
+            case 6 : seat_column = "E"; break;
+            case 7 : seat_column = "F"; break;
         }
 
         return seat_row + seat_column;
