@@ -7,9 +7,6 @@ package rrocha.uk;
 
 public class SeatPlan {
 
-    //set variables for rown and column
-    String seat_row, seat_column;
-
     //char array multidimensional
     //rows and columns
     char[][] seats = {{' ','A','B','C',' ','D','E','F'},
@@ -86,6 +83,10 @@ public class SeatPlan {
         //     seat_column = "F";
         // }
 
+        //set variables for rown and column
+        String seat_row = String.valueOf(row);
+        String seat_column = String.valueOf(column);
+
         switch(row) {
             case 1 : seat_row = "A"; break;
             case 2 : seat_row = "B"; break;
@@ -120,8 +121,62 @@ public class SeatPlan {
     }
 
     //allocate seat to user
-    public void selectSeat(int row, int column) {
+    public void selectRandomSeat(int row, int column) {
         seats[row][column] = '1';
+    }
+
+    //manually allocate seat to user
+    public void selectManualSeat(String seat) {
+
+        String row = seat.substring( /* select the first char*/ 0, /* select the second char */ 1 );
+        String column = seat.substring(1, 2);
+
+        int seat_row = '0';
+        int seat_column = '0';
+
+        switch(row) {
+            case "A" : seat_row = 1; break;
+            case "B" : seat_row = 2; break;
+            case "C" : seat_row = 3; break;
+            case "D" : seat_row = 4; break;
+            case "E" : seat_row = 5; break;
+            case "F" : seat_row = 6; break;
+            case "G" : seat_row = 7; break;
+            case "H" : seat_row = 8; break;
+            case "I" : seat_row = 9; break;
+            case "J" : seat_row = 10; break;
+            case "K" : seat_row = 11; break;
+            case "L" : seat_row = 12; break;
+        }
+
+        switch(column) {
+            case "A" : seat_column = 1; break;
+            case "B" : seat_column = 2; break;
+            case "C" : seat_column = 3; break;
+            case "D" : seat_column = 5; break;
+            case "E" : seat_column = 6; break;
+            case "F" : seat_column = 7; break;
+        }
+
+        seats[seat_row][seat_column] = '1';
+
+    }
+
+    //method to cound how many seats are booked
+    public int bookedCount() {
+
+        int counter = 0; //always start the counter as 0 before counting
+
+        for (char[] cs : seats) {
+            for (char print : cs) {
+                if(print == '1') {
+                    counter++;
+                }
+            }
+        }
+
+        return counter;
+
     }
 
 }
