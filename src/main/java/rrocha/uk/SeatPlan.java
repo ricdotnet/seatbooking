@@ -126,7 +126,7 @@ public class SeatPlan {
     }
 
     //manually allocate seat to user
-    public void selectManualSeat(String seat) {
+    public int selectManualSeat(String seat) {
 
         String row = seat.substring( /* select the first char*/ 0, /* select the second char */ 1 );
         String column = seat.substring(1, 2);
@@ -159,6 +159,8 @@ public class SeatPlan {
         }
 
         seats[seat_row][seat_column] = '1';
+
+        return seat_row;
 
     }
 

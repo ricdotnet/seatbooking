@@ -68,6 +68,8 @@ public final class SeatBooking {
                             //if the seat is empty book it and end while loop. if not repeat
                             if (status == '1' || status == ' ') {
                                 System.out.println("not a valid seat."); //temp message
+                                //TO BE REMOVED LATER
+
 
                             } else if (status == '0') {
                                 seats.selectRandomSeat(row+1, column+1);
@@ -88,20 +90,11 @@ public final class SeatBooking {
                 case 3:
 
                     //ask the user for an input
-                    System.out.print("Please choose your seat (XX): ");
+                    System.out.print("Please choose your seat (XX - AA-LF): ");
                     String chosen_seat = input.next();
 
-                    if(chosen_seat.length() > 2) {
-                        System.out.println("A seat is composed by 2 values only. Eg: AA or AB...");
-                    } else {
-
-                        try{
-                            seats.selectManualSeat(chosen_seat);
-                            System.out.println("You booked the seat: " + chosen_seat);
-                        } catch (ArrayIndexOutOfBoundsException e) {
-                            System.out.println("Invalid seat. Make sure you select a valid seat. (AA - LF)");
-                        }
-                    }
+                    //call the method to set the seat
+                    main.manualSeat(chosen_seat);
 
                     break;
 
@@ -114,6 +107,31 @@ public final class SeatBooking {
         }
 
     } //end main method
+
+    //method to manually set a seat
+    void manualSeat(String seat) {
+
+        if(seat.length() > 2) {
+            System.out.println("A seat is composed by 2 values only. Eg: AA or AB...");
+        } else {
+
+            try{
+                seats.selectManualSeat(seat);
+                System.out.println("You booked the seat: " + seat);
+
+                if(seats.selectManualSeat(seat) < 7) {
+                    System.out.println("Your seat was booked in first class.");
+                } else {
+                    System.out.println("Your seat was booked in economy class.");
+                }
+
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("Invalid seat. Make sure you select a valid seat. (AA - LF)");
+            }
+        }
+
+    }
+
 
     //menu method
     void getMenu() {
