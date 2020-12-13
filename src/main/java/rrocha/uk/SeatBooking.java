@@ -8,13 +8,9 @@ public final class SeatBooking {
     static SeatPlan seats = new SeatPlan(); //create object from SeatPlan.java
     static SeatBooking main = new SeatBooking(); //create object from SeatBooking.java
 
-    static Random rand = new Random();
-    static Scanner input = new Scanner(System.in);
+    static Random rand = new Random(); //random method to generate numbers
+    static Scanner input = new Scanner(System.in); //scanner method to scan user inputs
 
-    /**
-     * Says hello to the world.
-     * @param args The arguments of the program.
-     */
     public static void main(String[] args) {
 
         while(true) {
@@ -48,12 +44,14 @@ public final class SeatBooking {
                     //it will repeat until a seat is booked
                     boolean booked = false;
 
-                    if (seats.bookedCount() == 72) {
-
+                    //first check for seat availability
+                    //if the plane is fully booked checkAvailability will return 1
+                    //if has empty seats will resturn 0
+                    //when full prints the message
+                    if(main.checkAvailability() == 1) {
                         System.out.println("The plane is full. :(");
-
                     } else {
-
+                    
                         //this while loop will run until a seat is booked
                         //if a seat is already booked it will loop and chose another one
                         //if a seat is not booked it will use that seat, book and end the loop
@@ -65,7 +63,8 @@ public final class SeatBooking {
                             //gets the seat status 1=occupied 0=empty
                             char status = seats.getSeatStatus(row+1, column+1);
 
-                            //if the seat is empty book it and end while loop. if not repeat
+
+                            //if the seat is empty book it and end while loop. if not repeat.
                             if (status == '1' || status == ' ') {
                                 System.out.println("not a valid seat."); //temp message
                                 //TO BE REMOVED LATER
@@ -80,8 +79,8 @@ public final class SeatBooking {
 
                             }
 
-                        } 
-
+                        } //end while loop
+                    
                     }
 
                     break;
@@ -108,10 +107,20 @@ public final class SeatBooking {
 
     } //end main method
 
+    //method to check plane seat availability
+    int checkAvailability() {
+        if (seats.bookedCount() == 72) { //fully booked.
+            return 1;
+        } else {
+            System.out.println(seats.bookedCount()); //line to be removed at the end.
+            return 0;
+        }
+    }
+
     //method to manually set a seat
     void manualSeat(String seat) {
 
-        if(seat.length() > 2) {
+        if(seat.length() > 2 || seat.length() < 2) {
             System.out.println("A seat is composed by 2 values only. Eg: AA or AB...");
         } else {
 
@@ -126,11 +135,17 @@ public final class SeatBooking {
                 }
 
             } catch (ArrayIndexOutOfBoundsException e) {
+                //exception for when the value entered is not String
+                System.out.println("Invalid seat. Make sure you select a valid seat. (AA - LF)");
+
+            } catch (StringIndexOutOfBoundsException e) { 
+                //exception for when is less than 2 values.
+                //the first if statement will catch it but if not throws this message.
                 System.out.println("Invalid seat. Make sure you select a valid seat. (AA - LF)");
             }
         }
 
-    }
+    } //end manual seat method
 
 
     //menu method

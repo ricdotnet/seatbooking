@@ -167,7 +167,7 @@ public class SeatPlan {
     //method to cound how many seats are booked
     public int bookedCount() {
 
-        int counter = 0; //always start the counter as 0 before counting
+        int counter = 1; //always start the counter as 0 before counting
 
         for (char[] cs : seats) {
             for (char print : cs) {
